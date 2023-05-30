@@ -10,7 +10,7 @@ def main():
 
     # Let's chat for 5 lines
     for step in range(5):
-        user_input = st.text_input("User:")
+        user_input = st.text_input("User:", key=f"user_input_{step}")
         if not user_input:
             break
 
@@ -26,7 +26,7 @@ def main():
         # pretty print last output tokens from bot
         response = tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
 
-        st.text("DialoGPT: {}".format(response))
+        st.text(f"DialoGPT: {response}")
 
 if __name__ == "__main__":
     main()
